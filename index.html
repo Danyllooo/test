@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>danyllooking</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <video autoplay muted loop id="bg-video">
+    <source src="x__sex_background.mp4" type="video/mp4" />
+    Twoja przeglądarka nie obsługuje tła wideo.
+  </video>
+
+
+  <button id="muteButton">🔊</button>
+
+
+  <audio id="bgmusic" autoplay loop>
+    <source src="ScreenRecording_06-18-2025-19-26-29_1.mp3" type="audio/mpeg" />
+    Twoja przeglądarka nie obsługuje odtwarzania audio.
+  </audio>
+
+
+  <div class="container">
+    <div class="center">
+      <h1 class="username">danyllooking</h1>
+      <p class="subtext">Jesus died on cross for you</p>
+      <div class="discord">
+        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" alt="Discord" class="icon">
+        <span>pro100wglowe_</span>
+      </div>
+    </div>
+
+    <div class="links">
+      <a href="https://steamcommunity.com/" target="_blank">Steam</a>
+      <a href="https://roblox.com/" target="_blank">Roblox</a>
+      <a href="https://example.com/" target="_blank">Inna strona</a>
+    </div>
+  </div>
+
+  <script>
+    const music = document.getElementById('bgmusic');
+    const button = document.getElementById('muteButton');
+
+    button.addEventListener('click', () => {
+      if (music.muted) {
+        music.muted = false;
+        button.textContent = "🔊";
+      } else {
+        music.muted = true;
+        button.textContent = "🔇";
+      }
+    });
+  </script>
+</body>
+</html>
