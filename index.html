@@ -14,14 +14,15 @@
   </video>
 
 
-  <button id="muteButton">🔊</button>
-
-
-  <audio id="bgmusic" autoplay loop>
+  <audio id="player" autoplay loop>
     <source src="ScreenRecording_06-18-2025-19-26-29_1.mp3" type="audio/mpeg" />
     Twoja przeglądarka nie obsługuje odtwarzania audio.
   </audio>
 
+  <div id="volumeControlContainer">
+    <label for="volumeControl">🎵</label>
+    <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="1">
+  </div>
 
   <div class="container">
     <div class="center">
@@ -40,19 +41,19 @@
     </div>
   </div>
 
-  <script>
-    const music = document.getElementById('bgmusic');
-    const button = document.getElementById('muteButton');
+<script>
+    const player = document.getElementById('player');
+    const volumeControl = document.getElementById('volumeControl');
 
-    button.addEventListener('click', () => {
-      if (music.muted) {
-        music.muted = false;
-        button.textContent = "🔊";
-      } else {
-        music.muted = true;
-        button.textContent = "🔇";
-      }
+    // Dostosowanie głośności przy zmianie suwaka
+    volumeControl.addEventListener('input', () => {
+      player.volume = volumeControl.value;
     });
+
+    // (iOS/Safari/Chrome) Niektóre przeglądarki blokują autoplay — poniższe pomaga przy interakcji:
+    window.addEventListener('click', () => {
+      player.play().catch(e => console.log("Autoplay zablokowany:", e));
+    }, { once: true });
   </script>
 </body>
 </html>
