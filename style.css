@@ -74,24 +74,43 @@ body, html {
   width: 24px;
   height: 24px;
 }
-
+.icon-img {
+  width: 24px;
+  height: 24px;
+}
 .links {
-  position: absolute;
-  bottom: 20px;
+  margin-top: 20px;
   display: flex;
-  gap: 20px;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
 }
 
-.links a {
-  text-decoration: none;
+
+.link-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-size: 1rem;
   color: white;
-  background: rgba(0, 0, 0, 0.4);
-  padding: 10px 16px;
-  border-radius: 8px;
+  text-shadow: 0 0 10px black;
   transition: background 0.3s ease;
+   width: 220px;
 }
 
-.links a:hover {
+.link-button i {
+  font-size: 1.2rem;
+}
+
+.link-button a {
+  color: white;
+  text-decoration: none;
+}
+
+.link-button:hover {
   background: rgba(0, 0, 0, 0.6);
 }
   
@@ -105,7 +124,11 @@ body, html {
       box-shadow: 0 0 5px rgba(0,0,0,0.2);
       z-index: 1000;
     }
-
+.icon-img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1); /* zmieni czarną ikonę na białą */
+}
    
     audio {
       display: none;
