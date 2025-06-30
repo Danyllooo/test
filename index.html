@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>danyllooking</title>
   <link rel="stylesheet" href="style.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
 
@@ -14,18 +14,18 @@
   </div>
 
   <video autoplay muted loop id="bg-video">
-    <source src="x__sex_background.mp4" type="video/mp4" />
+    <source src="BACKGROUNDS/I_Am_The_ALPHA___Christian_Edit.mp4" type="video/mp4" />
     Twoja przeglądarka nie obsługuje tła wideo.
   </video>
 
   <audio id="player" loop>
-    <source src="ScreenRecording_06-18-2025-19-26-29_1.mp3" type="audio/mpeg" />
+    <source src="BACKGROUNDS/I_Am_The_ALPHA___Christian_Edit.mp4" type="audio/mpeg" />
     Twoja przeglądarka nie obsługuje odtwarzania audio.
   </audio>
 
   <div id="volumeControlContainer">
     <label for="volumeControl"><i class="fa-solid fa-volume-high"></i></label>
-    <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="1">
+    <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="1" />
   </div>
 
   <div class="container">
@@ -33,45 +33,81 @@
       <h1 class="username">danyllooking</h1>
       <p class="subtext">Jesus died on a cross for you</p>
       <div class="discord">
-        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" alt="Discord" class="icon">
+        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" alt="Discord" class="icon" />
         <span>pro100wglowe_</span>
       </div>
     </div>
 
     <div class="links">
-  <div class="link-button">
-    <i class="fa-brands fa-steam"></i>
-    <a href="https://steamcommunity.com/id/45678987654689543/" target="_blank">Steam</a>
-  </div>
+      <a class="link-button" href="https://steamcommunity.com/id/45678987654689543/" target="_blank">
+        <i class="fa-brands fa-steam"></i>
+        Steam
+      </a>
 
-  <div class="link-button">
-  <img src="play.png" alt="Roblox" class="icon-img">
-  <a href="https://www.roblox.com/users/550996076/profile" target="_blank">Roblox</a>
-</div>
+      <a class="link-button" href="https://www.roblox.com/users/550996076/profile" target="_blank">
+        <img src="LOGOS/ariasdasdasdat.jpg" alt="Roblox" class="icon-img" />
+        Roblox
+      </a>
 
-  <div class="link-button">
-    <i class="fa-solid fa-users"></i>
-    <a href="https://www.roblox.com/communities/33158719/TeeTrendz#!/about" target="_blank">Roblox Community</a>
+      <a class="link-button" href="https://www.roblox.com/communities/33158719/TeeTrendz#!/about" target="_blank">
+        <i class="fa-solid fa-users"></i>
+        Roblox Community
+      </a>
+    </div>
+
+    <div class="kontener">
+      <div class="strzalka lewa">→</div>
+      <div class="strzalka prawa">←</div>
+
+      <a href="https://g4skins.com/ref/L9BEASTL9" target="_blank">
+        <img src="LOGOS/g4skins_F2AL2O5.png" alt="Kliknij mnie" id="obrazek" />
+      </a>
+
+      <audio id="muzyka" src="Silence!.ogg"></audio>
+    </div>
   </div>
-</div>
+  <button id="openGalleryBtn" class="link-button">TOPSECRET</button>
 
   <script>
     const overlay = document.getElementById('overlay');
     const player = document.getElementById('player');
     const volumeControl = document.getElementById('volumeControl');
+    const obrazek = document.getElementById('obrazek');
+    const muzyka = document.getElementById('muzyka');
 
-    player.volume = volumeControl.value;
+    player.volume = volumeControl.value;  
+    player.volume = 0.5;
 
     overlay.addEventListener('click', () => {
       overlay.style.display = 'none';
-      player.play().catch(err => {
-        console.log("Błąd odtwarzania:", err);
-      });
+      player.play().catch(err => console.log("Błąd odtwarzania:", err));
     });
+
+    player.volume = volumeControl.value;
 
     volumeControl.addEventListener('input', () => {
       player.volume = volumeControl.value;
     });
+
+    obrazek.addEventListener('mouseenter', () => {
+      muzyka.currentTime = 0;
+      muzyka.play();
+    });
+
+    obrazek.addEventListener('mouseleave', () => {
+      muzyka.pause();
+      muzyka.currentTime = 0;
+    });
+
+document.getElementById('openGalleryBtn').addEventListener('click', () => {
+    const password = prompt("Wpisz hasło, aby przejść do galerii:");
+    if (password === "lukas") {  
+      window.location.href = "index2.html";  
+    } else if (password !== null) {
+      alert("Błędne hasło!");
+    }
+  });
+    
   </script>
 </body>
 </html>
