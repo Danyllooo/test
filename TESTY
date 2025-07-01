@@ -1,0 +1,26 @@
+.link-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-size: 1rem;
+  color: white;
+  text-shadow: 0 0 10px black;
+  transition: background 0.3s ease;
+   width: 220px;
+}
+
+.link-button i {
+  font-size: 1.2rem;
+}
+
+.link-button a {
+  color: white;
+  text-decoration: none;
+}
+
+.link-button:hover {
+  background: rgba(0, 0, 0, 0.6);
+}
