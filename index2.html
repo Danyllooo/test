@@ -4,85 +4,82 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="style2.css" />
   <title>Galeria</title>
   
 </head>
 <body>
-<button id="backBtn" class="BUT">← Powrót</button>
-  <h1>KUTASKI</h1>
+ <button id="backBtn" class="BUT">← Powrót</button>
+  <h1 style="text-align: center;">KUTASKI</h1>
 
   <div class="gallery">
-    <!-- Zdjęcia jako miniaturki -->
-    <img src="/ZDJ/zdj1.jpeg" alt="Zdjęcie 1" class="thumb-img" />
-      <img src="ZDJ/zdj2.png" alt="Zdjęcie 2" class="thumb-img" />
-      <img src="ZDJ/zdj3.jpg" alt="Zdjęcie 3" class="thumb-img" />
-      <img src="ZDJ/zdj4.jpg" alt="Zdjęcie 3" class="thumb-img" />
-      <img src="ZDJ/zdj5.jpg" alt="Zdjęcie 3" class="thumb-img" />
 
-    <!-- Filmy jako miniaturki -->
+    <img src="ZDJ/zdj1.jpeg" alt="Zdjęcie 1" class="thumb-img" />
+    <img src="ZDJ/zdj2.png" alt="Zdjęcie 2" class="thumb-img" />
+    <img src="ZDJ/zdj3.jpg" alt="Zdjęcie 3" class="thumb-img" />
+    <img src="ZDJ/zdj4.jpg" alt="Zdjęcie 4" class="thumb-img" />
+    <img src="ZDJ/zdj5.jpg" alt="Zdjęcie 5" class="thumb-img" />
+    <img src="ZDJ/zdj6.jpg" alt="Zdjęcie 5" class="thumb-img" />
+    <img src="ZDJ/zdj7.jpg" alt="Zdjęcie 5" class="thumb-img" />
+    <img src="ZDJ/zdj8.jpg" alt="Zdjęcie 5" class="thumb-img" />
+
+ 
     <video src="ZDJ/fil1.mov" muted preload="metadata" class="thumb-video"></video>
     <video src="film2.mp4" muted preload="metadata" class="thumb-video"></video>
   </div>
 
   <div id="lightbox">
-    <!-- Tu pojawi się powiększone zdjęcie lub wideo -->
-    <img id="largeImg" style="display:none;" />
-    <video id="largeVideo" controls autoplay style="display:none;"></video>
-    <br />
-    <button id="closeBtn">Zamknij</button>
+    <img id="largeImg" style="display: none;" />
+    <video id="largeVideo" controls autoplay style="display: none;"></video>
   </div>
 
   <script>
-
-document.getElementById('backBtn').addEventListener('click', () => {
-      window.location.href = "index.html";
-    });
-
     const gallery = document.querySelector('.gallery');
     const lightbox = document.getElementById('lightbox');
     const largeImg = document.getElementById('largeImg');
     const largeVideo = document.getElementById('largeVideo');
-    const closeBtn = document.getElementById('closeBtn');
+
+    document.getElementById('backBtn').addEventListener('click', () => {
+      window.location.href = "index.html";
+    });
 
     gallery.addEventListener('click', e => {
       const target = e.target;
 
-      if(target.classList.contains('thumb-img')) {
-        // Pokazujemy powiększone zdjęcie
-        largeVideo.style.display = 'none';
+      if (target.classList.contains('thumb-img')) {
         largeVideo.pause();
-        largeVideo.src = "";
-
+        largeVideo.style.display = 'none';
         largeImg.src = target.src;
         largeImg.style.display = 'block';
-        lightbox.style.display = 'block';
-      }
-
-      else if(target.classList.contains('thumb-video')) {
-        // Pokazujemy powiększone wideo
+        lightbox.style.display = 'flex';
+      } else if (target.classList.contains('thumb-video')) {
         largeImg.style.display = 'none';
-
         largeVideo.src = target.src;
         largeVideo.style.display = 'block';
         largeVideo.play();
-
-        lightbox.style.display = 'block';
+        lightbox.style.display = 'flex';
       }
     });
 
-    closeBtn.addEventListener('click', () => {
+    // Zamykanie po kliknięciu na zdjęcie lub wideo
+    largeImg.addEventListener('click', () => {
       lightbox.style.display = 'none';
-      largeVideo.pause();
-      largeVideo.src = "";
+      largeImg.style.display = 'none';
       largeImg.src = "";
     });
 
-    // Opcjonalnie zamykanie po kliknięciu poza video/zdjęciem
+    largeVideo.addEventListener('click', () => {
+      lightbox.style.display = 'none';
+      largeVideo.pause();
+      largeVideo.style.display = 'none';
+      largeVideo.src = "";
+    });
+
+    // Zamknięcie po kliknięciu poza zawartość
     lightbox.addEventListener('click', (e) => {
-      if(e.target === lightbox) {
-        closeBtn.click();
+      if (e.target === lightbox) {
+        largeImg.click();
+        largeVideo.click();
       }
     });
   </script>

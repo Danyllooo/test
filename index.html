@@ -13,19 +13,19 @@
     <div id="overlayText">Kliknij, aby wejść</div>
   </div>
 
-  <video autoplay muted loop id="bg-video">
+  <video  muted loop id="bg-video">
     <source src="BACKGROUNDS/I_Am_The_ALPHA___Christian_Edit.mp4" type="video/mp4" />
     Twoja przeglądarka nie obsługuje tła wideo.
   </video>
 
   <audio id="player" loop>
-    <source src="BACKGROUNDS/I_Am_The_ALPHA___Christian_Edit.mp4" type="audio/mpeg" />
+    <source src="MUSIC/I_Am_The_ALPHA___Christian_Edit.mp3" type="audio/mpeg" />
     Twoja przeglądarka nie obsługuje odtwarzania audio.
   </audio>
 
   <div id="volumeControlContainer">
     <label for="volumeControl"><i class="fa-solid fa-volume-high"></i></label>
-    <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="1" />
+    <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="0.4" />
   </div>
 
   <div class="container">
@@ -62,7 +62,6 @@
       <a href="https://g4skins.com/ref/L9BEASTL9" target="_blank">
         <img src="LOGOS/g4skins_F2AL2O5.png" alt="Kliknij mnie" id="obrazek" />
       </a>
-
       <audio id="muzyka" src="Silence!.ogg"></audio>
     </div>
   </div>
@@ -71,23 +70,26 @@
   <script>
     const overlay = document.getElementById('overlay');
     const player = document.getElementById('player');
+    const bgVideo = document.getElementById('bg-video');
     const volumeControl = document.getElementById('volumeControl');
-    const obrazek = document.getElementById('obrazek');
-    const muzyka = document.getElementById('muzyka');
+    const muzyka = document.getElementById('muzyka');  
 
-    player.volume = 0.4;              
-    volumeControl.value = 0.4; 
+    player.volume = parseFloat(volumeControl.value);
+    muzyka.volume = parseFloat(volumeControl.value);
 
     overlay.addEventListener('click', () => {
       overlay.style.display = 'none';
-      player.play().catch(err => console.log("Błąd odtwarzania:", err));
-    });
 
-    player.volume = volumeControl.value;
+      player.play().catch(err => console.log("Błąd audio:", err));
+      bgVideo.play().catch(err => console.log("Błąd video:", err));
+    });
 
     volumeControl.addEventListener('input', () => {
-      player.volume = volumeControl.value;
+      const vol = parseFloat(volumeControl.value);
+      player.volume = vol;
+      muzyka.volume = vol;
     });
+
 
     obrazek.addEventListener('mouseenter', () => {
       muzyka.currentTime = 0;
