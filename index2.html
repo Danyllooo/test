@@ -22,22 +22,35 @@
     <img src="ZDJ/zdj6.jpg" alt="Zdjęcie 5" class="thumb-img" />
     <img src="ZDJ/zdj7.jpg" alt="Zdjęcie 5" class="thumb-img" />
     <img src="ZDJ/zdj8.jpg" alt="Zdjęcie 5" class="thumb-img" />
+    <img src="ZDJ/filipek.png" alt="Zdjęcie 5" class="thumb-img" />
+    <img src="ZDJ/freak.png" alt="Zdjęcie 5" class="thumb-img" />
+    <img src="ZDJ/gejuch.png" alt="Zdjęcie 5" class="thumb-img" />
+    <img src="ZDJ/IMG_8610.jpg" alt="Zdjęcie 5" class="thumb-img" />
+    <img src="ZDJ/IMG_8611.jpg" alt="Zdjęcie 5" class="thumb-img" />
+    <img src="ZDJ/IMG_8612.jpg" alt="Zdjęcie 5" class="thumb-img" />
+    <img src="ZDJ/jestmoc.png" alt="Zdjęcie 5" class="thumb-img" />
+
 
  
     <video src="ZDJ/fil1.mov" muted preload="metadata" class="thumb-video"></video>
     <video src="film2.mp4" muted preload="metadata" class="thumb-video"></video>
   </div>
 
-  <div id="lightbox">
-    <img id="largeImg" style="display: none;" />
-    <video id="largeVideo" controls autoplay style="display: none;"></video>
+<div id="lightbox">
+  <img id="largeImg" style="display: none;" />
+  <video id="largeVideo" controls autoplay style="display: none;"></video>
+  <div id="clickHint" style="display: none; color: white; font-size: 18px; margin-top: 20px;">
+    click again to leave
   </div>
+</div>
 
-  <script>
+<script>
     const gallery = document.querySelector('.gallery');
     const lightbox = document.getElementById('lightbox');
     const largeImg = document.getElementById('largeImg');
     const largeVideo = document.getElementById('largeVideo');
+    const clickHint = document.getElementById('clickHint');
+    const backBtn = document.getElementById('backBtn');
 
     document.getElementById('backBtn').addEventListener('click', () => {
       window.location.href = "index.html";
@@ -51,21 +64,26 @@
         largeVideo.style.display = 'none';
         largeImg.src = target.src;
         largeImg.style.display = 'block';
+        clickHint.style.display = 'block';
         lightbox.style.display = 'flex';
+        backBtn.style.display = 'none';
       } else if (target.classList.contains('thumb-video')) {
         largeImg.style.display = 'none';
         largeVideo.src = target.src;
         largeVideo.style.display = 'block';
         largeVideo.play();
+        clickHint.style.display = 'block';
         lightbox.style.display = 'flex';
+        backBtn.style.display = 'none';
       }
     });
 
-    // Zamykanie po kliknięciu na zdjęcie lub wideo
     largeImg.addEventListener('click', () => {
       lightbox.style.display = 'none';
       largeImg.style.display = 'none';
       largeImg.src = "";
+      clickHint.style.display = 'none';
+      backBtn.style.display = 'block';
     });
 
     largeVideo.addEventListener('click', () => {
@@ -73,15 +91,24 @@
       largeVideo.pause();
       largeVideo.style.display = 'none';
       largeVideo.src = "";
+      clickHint.style.display = 'none';
+      backBtn.style.display = 'block';
     });
 
-    // Zamknięcie po kliknięciu poza zawartość
     lightbox.addEventListener('click', (e) => {
       if (e.target === lightbox) {
         largeImg.click();
         largeVideo.click();
       }
     });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        largeImg.click();
+        largeVideo.click();
+      }
+    });
   </script>
+
 </body>
 </html>

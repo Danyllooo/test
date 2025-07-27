@@ -8,77 +8,77 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
+<div id="overlay">
+  <div id="overlayText">Kliknij, aby wejść</div>
+</div>
 
-  <div id="overlay">
-    <div id="overlayText">Kliknij, aby wejść</div>
+<video  muted loop id="bg-video">
+  <source src="BACKGROUNDS/I_Am_The_ALPHA___Christian_Edit.mp4" type="video/mp4" />
+  Twoja przeglądarka nie obsługuje tła wideo.
+</video>
+
+<audio id="player" loop>
+  <source src="MUSIC/I_Am_The_ALPHA___Christian_Edit.mp3" type="audio/mpeg" />
+  Twoja przeglądarka nie obsługuje odtwarzania audio.
+</audio>
+
+<div id="volumeControlContainer">
+  <label for="volumeControl"><i class="fa-solid fa-volume-high"></i></label>
+  <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="0.4" />
+</div>
+
+<div class="container">
+  <div class="center">
+    <h1 class="username">danyllooking</h1>
+    <p class="subtext">Jesus died on a cross for you</p>
+  <div class="discord">
+    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" alt="Discord" class="icon" />
+    <span>pro100wglowe_</span>
   </div>
+</div>
 
-  <video  muted loop id="bg-video">
-    <source src="BACKGROUNDS/I_Am_The_ALPHA___Christian_Edit.mp4" type="video/mp4" />
-    Twoja przeglądarka nie obsługuje tła wideo.
-  </video>
+<div class="links">
+  <a class="link-button" href="https://steamcommunity.com/id/45678987654689543/" target="_blank">
+    <i class="fa-brands fa-steam"></i>
+  Steam
+  </a>
+  <a class="link-button" href="https://www.instagram.com/danyloo_ro/" target="_blank">
+    <i class="fa-brands fa-instagram"></i>
+  Instagram
+  </a>
+  <a class="link-button" href="https://www.roblox.com/users/550996076/profile" target="_blank">
+    <img src="LOGOS/ariasdasdasdat.jpg" alt="Roblox" class="icon-img" />
+  Roblox
+  </a>
+  <a class="link-button" href="https://www.roblox.com/communities/33158719/TeeTrendz#!/about" target="_blank">
+    <i class="fa-solid fa-users"></i>
+  Roblox Community
+  </a>
+</div>
+<div class="kontener">
+  <div class="strzalka lewa">→</div>
+  <div class="strzalka prawa">←</div>
 
-  <audio id="player" loop>
-    <source src="MUSIC/I_Am_The_ALPHA___Christian_Edit.mp3" type="audio/mpeg" />
-    Twoja przeglądarka nie obsługuje odtwarzania audio.
-  </audio>
+  <a href="https://g4skins.com/ref/L9BEASTL9" target="_blank">
+    <img src="LOGOS/g4skins_F2AL2O5.png" alt="Kliknij mnie" id="obrazek" />
+  </a>
+    <audio id="muzyka" src="Silence!.ogg"></audio>
+</div>
+</div>
+ 
 
-  <div id="volumeControlContainer">
-    <label for="volumeControl"><i class="fa-solid fa-volume-high"></i></label>
-    <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="0.4" />
-  </div>
+<script>
+  const overlay = document.getElementById('overlay');
+  const player = document.getElementById('player');
+  const bgVideo = document.getElementById('bg-video');
+  const volumeControl = document.getElementById('volumeControl');
+  const muzyka = document.getElementById('muzyka');  
 
-  <div class="container">
-    <div class="center">
-      <h1 class="username">danyllooking</h1>
-      <p class="subtext">Jesus died on a cross for you</p>
-      <div class="discord">
-        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" alt="Discord" class="icon" />
-        <span>pro100wglowe_</span>
-      </div>
-    </div>
+  player.volume = parseFloat(volumeControl.value);
+  muzyka.volume = parseFloat(volumeControl.value);
 
-    <div class="links">
-      <a class="link-button" href="https://steamcommunity.com/id/45678987654689543/" target="_blank">
-        <i class="fa-brands fa-steam"></i>
-        Steam
-      </a>
-
-      <a class="link-button" href="https://www.roblox.com/users/550996076/profile" target="_blank">
-        <img src="LOGOS/ariasdasdasdat.jpg" alt="Roblox" class="icon-img" />
-        Roblox
-      </a>
-
-      <a class="link-button" href="https://www.roblox.com/communities/33158719/TeeTrendz#!/about" target="_blank">
-        <i class="fa-solid fa-users"></i>
-        Roblox Community
-      </a>
-    </div>
-
-    <div class="kontener">
-      <div class="strzalka lewa">→</div>
-      <div class="strzalka prawa">←</div>
-
-      <a href="https://g4skins.com/ref/L9BEASTL9" target="_blank">
-        <img src="LOGOS/g4skins_F2AL2O5.png" alt="Kliknij mnie" id="obrazek" />
-      </a>
-      <audio id="muzyka" src="Silence!.ogg"></audio>
-    </div>
-  </div>
-  <button id="openGalleryBtn" class="link-button">TOPSECRET</button>
-
-  <script>
-    const overlay = document.getElementById('overlay');
-    const player = document.getElementById('player');
-    const bgVideo = document.getElementById('bg-video');
-    const volumeControl = document.getElementById('volumeControl');
-    const muzyka = document.getElementById('muzyka');  
-
-    player.volume = parseFloat(volumeControl.value);
-    muzyka.volume = parseFloat(volumeControl.value);
-
-    overlay.addEventListener('click', () => {
-      overlay.style.display = 'none';
+  overlay.addEventListener('click', () => {
+    overlay.style.display = 'none';
 
       player.play().catch(err => console.log("Błąd audio:", err));
       bgVideo.play().catch(err => console.log("Błąd video:", err));
@@ -101,6 +101,21 @@
       muzyka.currentTime = 0;
     });
 
+  document.addEventListener('keydown', (e) => {
+    
+    if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'g') {
+      const input = prompt("Wpisz hasło, aby przejść do galerii:");
+      
+      
+      const decoded = atob("bHVrYXM="); 
+      
+      if (input === decoded) {
+        window.location.href = "index2.html";
+      } else if (input !== null) {
+        alert("Błędne hasło!");
+      }
+    }
+  });
 document.getElementById('openGalleryBtn').addEventListener('click', () => {
     const password = prompt("Wpisz hasło, aby przejść do galerii:");
     if (password === "lukas") {  
@@ -110,6 +125,6 @@ document.getElementById('openGalleryBtn').addEventListener('click', () => {
     }
   });
     
-  </script>
+</script>
 </body>
 </html>
