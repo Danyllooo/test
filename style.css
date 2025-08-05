@@ -1,22 +1,263 @@
-body, html {
+* {
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: white;
-  overflow-x: hidden;
-  height: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Gloria Hallelujah', cursive;
+  color: #fff;
+  overflow: hidden;
+  background: #000;
 }
 
 #bg-video {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   z-index: -1;
 }
 
+.volume-control {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: rgba(0,0,0,0.6);
+  border-radius: 10px;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  user-select: none;
+  z-index: 20;
+}
+
+#volumeControl {
+  width: 120px;
+}
+
+#volumeIcon {
+  font-size: 1.3rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Animacja ikony głośnika */
+.muted {
+  filter: grayscale(100%) brightness(0.6);
+}
+
+.main-container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 0 20px #fff;
+}
+
+
+.username {
+  font-size: 2.5em;
+  margin-top: 0;       
+  margin-bottom: 10px; 
+  text-shadow: 0 0 15px #fff;
+}
+
+.description {
+  opacity: 0.8;
+  font-size: 1em;
+  margin-bottom: 30px;
+}
+
+.discord-status {
+  display: flex;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px 25px;      
+  border-radius: 16px;
+  width: 460px;             
+  margin: 0 auto;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;  
+  animation: fadeIn 0.7s ease forwards;
+  opacity: 0;
+  flex-direction: column;   
+  box-shadow: 0 0 20px rgba(30, 215, 96, 0.7); 
+}
+
+
+.status-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 0 10px #fff;
+}
+
+#status-name {
+  display: none;
+}
+
+.status-text h2 {
+  font-size: 1.2em;
+  margin: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-text p {
+  font-size: 1em;
+  color: #bbb;
+  margin: 5px 0 0 0;
+}
+
+.playing {
+  color: #fff;
+  font-weight: bold;
+  animation: fadeInText 1s ease forwards;
+  opacity: 0;
+}
+
+/*  */
+/* SPOTIFY */
+/*  */
+
+.status-circle {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: inline-block;
+  background-color: #747f8d;
+  box-shadow: 0 0 6px rgba(0,0,0,0.3);
+  transition: background-color 0.3s ease;
+}
+
+/* Spotify card */
+.spotify-card {
+  margin-top: 12px;
+  background: rgba(30, 215, 96, 0.9);
+  border-radius: 12px;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  box-shadow: 0 0 15px #1ed760;
+  animation: fadeIn 1s ease forwards;
+  gap: 10px;
+  font-weight: 600;
+  width: 420px;  
+}
+
+.spotify-album-art {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 0 8px rgba(0,0,0,0.5);
+  flex-shrink: 0;
+}
+
+.spotify-info {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.spotify-song {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.spotify-artist {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+#spotify-username {
+  font-weight: 700;
+  margin-bottom: 5px;
+  font-size: 1.2em;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 0 6px #1ed760;
+}
+/* guzik */
+.icon-button {
+  display: inline-flex;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  text-decoration: none; 
+  filter: drop-shadow(0 0 12px currentColor);
+}
+
+.icon-button svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.icon-button:hover,
+.icon-button:focus {
+  outline: none;
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 12px currentColor);
+}
+
+.button-row {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Animacje */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+@keyframes fadeInText {
+  to { opacity: 1; }
+}
+
+/* Footer */
+.footer-info {
+  margin-top: 20px;
+  font-size: 0.9em;
+  opacity: 0.8;
+}
+
+#snow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Overlay z fadeout */
 #overlay {
   position: fixed;
   top: 0; left: 0;
@@ -26,7 +267,14 @@ body, html {
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  z-index: 10;
+  z-index: 100;
+  opacity: 1;
+  transition: opacity 0.7s ease;
+}
+
+#overlay.fade-out {
+  opacity: 0;
+  pointer-events: none;
 }
 
 #overlayText {
@@ -35,196 +283,3 @@ body, html {
   font-weight: 700;
   user-select: none;
 }
-
-/* Kontener centralny */
-.container {
-  max-width: 900px;
-  margin: 50px auto 0 auto;
-  padding: 0 20px;
-  text-align: center;
-}
-
-.center h1.username {
-  font-size: 3rem;
-  margin: 0;
-  font-weight: 900;
-  letter-spacing: 2px;
-  text-shadow: 0 0 10px #000;
-}
-
-.center p.subtext {
-  font-size: 1.25rem;
-  margin-top: 5px;
-  font-style: italic;
-  opacity: 0.8;
-}
-
-/* Discord */
-.discord {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: 20px;
-  background: #7289da;
-  color: white;
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-weight: 600;
-  box-shadow: 0 0 10px #7289daaa;
-  width: fit-content;
-  user-select: none;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.discord .icon {
-  width: 30px;
-  height: 30px;
-  filter: drop-shadow(0 0 2px black);
-}
-
-.icon-img {
-  width: 24px;
-  height: 24px;
-}
-
-.links {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  align-items: center;
-  margin-top: 30px;
-}
-
-.link-button {
-  display: flex;
-  align-items: center;
-  font-weight: 600;
-  gap: 10px;
-  background: rgba(0, 0, 0, 0.3);
-  padding: 0px 20px;
-  border-radius: 12px;
-  font-size: 15px;
-  text-decoration: none;
-  color: white;
-  text-shadow: 0 0 10px black;
-  transition: background 0.3s ease;
-  cursor: pointer;
-  width: 120px;
-  height: 40px; 
-  justify-content: center;
-}
-
-.link-button i, .link-button img.icon-img {
-  font-size: 19px;
-  filter: drop-shadow(0 0 2px black);
-}
-
-.link-button:hover {
-  background-color: #444;
-  box-shadow: 0 0 15px white;
-}
-
-.link-button a {
-  color: white;
-  text-decoration: none;
-}
-
-/* Kontener obrazka kassadin */
-.kontener {
-  position: relative;
-  display: inline-block;
-  margin-top: 40px;
-  
-}
-
-/* Obrazek */
-#obrazek {
-  width: 300px;
-  height: auto;
-  border: 3px solid white;
-  display: block;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-  border-radius: 5px;
-}
-
-#obrazek:hover {
-  transform: scale(1.05);
-}
-
-/* Strzałki po bokach obrazka */
-.strzalka {
-  position: absolute;
-  font-size: 60px;
-  color: white;
-  font-weight: bold;
-  animation: miganie 1s infinite;
-  pointer-events: none;
-  user-select: none;
-  text-shadow: 0 0 10px black;
-}
-
-.strzalka.lewa {
-  top: 50%;
-  left: -70px;
-  transform: translateY(-50%) 
-}
-
-.strzalka.prawa {
-  top: 50%;
-  right: -70px;
-  transform: translateY(-50%);
-}
-
-/* Animacja migania */
-@keyframes miganie {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.3; }
-}
-
-
-#volumeControlContainer {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: rgba(30,30,30,0.7);
-  padding: 10px 15px;
-  border-radius: 25px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  box-shadow: 0 0 10px #000;
-}
-
-#volumeControl {
-  width: 120px;
-  cursor: pointer;
-  -webkit-appearance: none;
-  background: #444;
-  height: 5px;
-  border-radius: 3px;
-}
-
-#volumeControl::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 16px;
-  height: 16px;
-  background: #7289da;
-  cursor: pointer;
-  border-radius: 50%;
-  box-shadow: 0 0 5px #7289da;
-  border: none;
-}
-
-#volumeControl::-moz-range-thumb {
-  width: 16px;
-  height: 16px;
-  background: #7289da;
-  cursor: pointer;
-  border-radius: 50%;
-  border: none;
-  box-shadow: 0 0 5px #7289da;
-}
-

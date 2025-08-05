@@ -2,129 +2,88 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>danyllooking</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Danylloo | BIO</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="icon" href="assets/favicon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet" />
 </head>
 <body>
-<div id="overlay">
-  <div id="overlayText">Kliknij, aby wejść</div>
-</div>
-
-<video  muted loop id="bg-video">
-  <source src="BACKGROUNDS/I_Am_The_ALPHA___Christian_Edit.mp4" type="video/mp4" />
-  Twoja przeglądarka nie obsługuje tła wideo.
-</video>
-
-<audio id="player" loop>
-  <source src="MUSIC/I_Am_The_ALPHA___Christian_Edit.mp3" type="audio/mpeg" />
-  Twoja przeglądarka nie obsługuje odtwarzania audio.
-</audio>
-
-<div id="volumeControlContainer">
-  <label for="volumeControl"><i class="fa-solid fa-volume-high"></i></label>
-  <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="0.4" />
-</div>
-
-<div class="container">
-  <div class="center">
-    <h1 class="username">danyllooking</h1>
-    <p class="subtext">Jesus died on a cross for you</p>
-  <div class="discord">
-    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" alt="Discord" class="icon" />
-    <span>pro100wglowe_</span>
+  <div id="overlay">
+    <div id="overlayText">Click, To Enter</div>
   </div>
-</div>
 
-<div class="links">
-  <a class="link-button" href="https://steamcommunity.com/id/45678987654689543/" target="_blank">
-    <i class="fa-brands fa-steam"></i>
-  Steam
-  </a>
-  <a class="link-button" href="https://www.instagram.com/danyloo_ro/" target="_blank">
-    <i class="fa-brands fa-instagram"></i>
-  Instagram
-  </a>
-  <a class="link-button" href="https://www.roblox.com/users/550996076/profile" target="_blank">
-    <img src="LOGOS/ariasdasdasdat.jpg" alt="Roblox" class="icon-img" />
-  Roblox
-  </a>
-  <a class="link-button" href="https://www.roblox.com/communities/33158719/TeeTrendz#!/about" target="_blank">
-    <i class="fa-solid fa-users"></i>
-  Roblox Community
-  </a>
-</div>
-<div class="kontener">
-  <div class="strzalka lewa">→</div>
-  <div class="strzalka prawa">←</div>
+  <video muted loop id="bg-video">
+    <source src="assets/japan.mp4" type="video/mp4" />
+  </video>
 
-  <a href="https://g4skins.com/ref/L9BEASTL9" target="_blank">
-    <img src="LOGOS/g4skins_F2AL2O5.png" alt="Kliknij mnie" id="obrazek" />
-  </a>
-    <audio id="muzyka" src="Silence!.ogg"></audio>
-</div>
-</div>
- 
+  <audio id="muzyka" loop>
+    <source src="assets/music.mp3" type="audio/mpeg" />
+    Twoja przeglądarka nie obsługuje odtwarzania audio.
+  </audio>
 
-<script>
-  const overlay = document.getElementById('overlay');
-  const player = document.getElementById('player');
-  const bgVideo = document.getElementById('bg-video');
-  const volumeControl = document.getElementById('volumeControl');
-  const muzyka = document.getElementById('muzyka');  
+  <div id="volumeControlContainer" class="volume-control">
+    <label for="volumeControl" id="volumeIcon">
+      <img src="assets/svg/speaker-24.png" width="20" height="20" />
+    </label>
+    <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="0.1" />
+  </div>
 
-  player.volume = parseFloat(volumeControl.value);
-  muzyka.volume = parseFloat(volumeControl.value);
+  <div class="main-container">
+    <div class="profile">
+      <img id="avatar" src="assets/avatar.png" alt="Avatar" class="avatar" />
+      <h1 class="username" id="username">Ładowanie...</h1>
+      <h3 class="description" id="description">Jesus died on a cross for you</h3>
+    </div>
 
-  overlay.addEventListener('click', () => {
-    overlay.style.display = 'none';
+    <div class="discord-status">
+      <img id="status-avatar" src="assets/avatar.png" alt="Avatar" class="status-avatar" />
+      <div class="status-text">
+        <h2 id="status-name">
+          <span id="status-circle" class="status-circle"></span>
+          Nazwa użytkownika
+        </h2>
+        <p id="status-playing">Now Playing  0:24 ─●──────── -2:56 ↪</p>
+        <div id="spotify-container"></div>
+      </div>
+    </div>
 
-      player.play().catch(err => console.log("Błąd audio:", err));
-      bgVideo.play().catch(err => console.log("Błąd video:", err));
-    });
+    <div class="button-row">
+        <a href="https://www.roblox.com/users/550996076/profile" target="_blank" rel="noopener" class="icon-button steam-button" aria-label="Steam">
+        <img src="assets/svg/brand-roblox-svgrepo-com.svg" alt="Roblox" width="40" height="40" />
+      </a>
 
-    volumeControl.addEventListener('input', () => {
-      const vol = parseFloat(volumeControl.value);
-      player.volume = vol;
-      muzyka.volume = vol;
-    });
-
-
-    obrazek.addEventListener('mouseenter', () => {
-      muzyka.currentTime = 0;
-      muzyka.play();
-    });
-
-    obrazek.addEventListener('mouseleave', () => {
-      muzyka.pause();
-      muzyka.currentTime = 0;
-    });
-
-  document.addEventListener('keydown', (e) => {
-    
-    if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'g') {
-      const input = prompt("Wpisz hasło, aby przejść do galerii:");
+      <a href="https://steamcommunity.com/id/45678987654689543/" target="_blank" rel="noopener" class="icon-button discord-button" aria-label="Discord">
+        <img src="assets/svg/steam-1.svg" alt="Steam" width="40" height="40" />
+      </a>
       
-      
-      const decoded = atob("bHVrYXM="); 
-      
-      if (input === decoded) {
-        window.location.href = "index2.html";
-      } else if (input !== null) {
-        alert("Błędne hasło!");
-      }
-    }
-  });
-document.getElementById('openGalleryBtn').addEventListener('click', () => {
-    const password = prompt("Wpisz hasło, aby przejść do galerii:");
-    if (password === "lukas") {  
-      window.location.href = "index2.html";  
-    } else if (password !== null) {
-      alert("Błędne hasło!");
-    }
-  });
-    
-</script>
+      <a href="https://www.instagram.com/danyloo_ro/" target="_blank" rel="noopener" class="icon-button steam-button" aria-label="Instagram">
+        <img src="assets/svg/instagram-glyph.svg" alt="Instagram" width="40" height="40" />
+      </a>
+
+    <a href="https://g4skins.com/ref/L9BEASTL9" target="_blank" rel="noopener" class="icon-button steam-button" aria-label="Instagram">
+        <img src="assets/svg/pobrane.jpg" alt="Instagram" width="40" height="40" />
+    </a>
+      <a href="https://www.roblox.com/communities/33158719/TeeTrendz#!/about" target="_blank" rel="noopener" class="icon-button steam-button" aria-label="Instagram">
+        <img src="assets/svg/icons8-roblox-logo.svg" alt="Instagram" width="40" height="40" />
+      </a>
+    </div>
+
+    <div class="footer-info">
+      <span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle;">
+          <path fill="currentColor" d="M12 9a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5a5 5 0 0 1 5-5a5 5 0 0 1 5 5a5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5" />
+        </svg>
+        183
+      </span> | <span>📍 ØQTF</span>
+    </div>
+  </div>
+
+  <canvas id="snow"></canvas>
+
+  <script>
+    const DISCORD_ID = "721771083040161802";
+  </script>
+  <script src="script.js"></script>
 </body>
 </html>
