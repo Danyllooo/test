@@ -20,42 +20,24 @@ document.addEventListener('DOMContentLoaded', () => {
     // ------------------------
     // galeria
     // ------------------------
-    document.addEventListener('DOMContentLoaded', () => {
-
-    function ukrytyHash(s) {
-        let wynik = 0;
-        for (let i = 0; i < s.length; i++) {
-            wynik = (wynik * 31 + s.charCodeAt(i)) % 999999;
-        }
-        return wynik;
-    }
-
-    
-    const tajnyHash = 594180; 
+     const tajnyHash = "cGVkYWxraQ=="; 
 
     function sprawdzHaslo() {
         const wpisane = prompt("Wpisz hasło, aby przejść do galerii:");
-        if (wpisane !== null && ukrytyHash(wpisane) === tajnyHash) {
+        if (wpisane !== null && btoa(wpisane) === tajnyHash) {
             window.location.href = "index2.html";
         } else if (wpisane !== null) {
-            alert("Błędne hasło!");
+            alert("❌ Błędne hasło!");
         }
     }
 
     
     document.addEventListener('keydown', (e) => {
-        if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'g') {
+        if (e.ctrlKey && e.altKey && e.key.toLowerCase() === 'g') {
+            e.preventDefault();
             sprawdzHaslo();
         }
     });
-
-    
-    const galleryBtn = document.getElementById('openGalleryBtn');
-    if (galleryBtn) {
-        galleryBtn.addEventListener('click', sprawdzHaslo);
-    }
-
-});
 
     // ------------------------
     // Efekt śniegu
@@ -68,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function addFlake() {
         const x = Math.random() * canvas.width;
-        const size = Math.random() * 3 + 2;
+        const size = Math.random() * 2 + 1;
         const speed = Math.random() * 1 + 0.5;
         flakes.push({ x, y: 0, size, speed });
     }
