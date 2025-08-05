@@ -20,29 +20,42 @@ document.addEventListener('DOMContentLoaded', () => {
     // ------------------------
     // galeria
     // ------------------------
+    document.addEventListener('DOMContentLoaded', () => {
+
+    function ukrytyHash(s) {
+        let wynik = 0;
+        for (let i = 0; i < s.length; i++) {
+            wynik = (wynik * 31 + s.charCodeAt(i)) % 999999;
+        }
+        return wynik;
+    }
+
+    
+    const tajnyHash = 594180; 
+
+    function sprawdzHaslo() {
+        const wpisane = prompt("Wpisz hasło, aby przejść do galerii:");
+        if (wpisane !== null && ukrytyHash(wpisane) === tajnyHash) {
+            window.location.href = "index2.html";
+        } else if (wpisane !== null) {
+            alert("Błędne hasło!");
+        }
+    }
+
+    
     document.addEventListener('keydown', (e) => {
         if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'g') {
-            const input = prompt("Wpisz hasło, aby przejść do galerii:");
-            const decoded = atob("bHVrYXM=");
-            if (input === decoded) {
-                window.location.href = "index2.html";
-            } else if (input !== null) {
-                alert("Błędne hasło!");
-            }
+            sprawdzHaslo();
         }
     });
 
+    
     const galleryBtn = document.getElementById('openGalleryBtn');
     if (galleryBtn) {
-        galleryBtn.addEventListener('click', () => {
-            const password = prompt("Wpisz hasło, aby przejść do galerii:");
-            if (password === "lukas") {
-                window.location.href = "index2.html";
-            } else if (password !== null) {
-                alert("Błędne hasło!");
-            }
-        });
+        galleryBtn.addEventListener('click', sprawdzHaslo);
     }
+
+});
 
     // ------------------------
     // Efekt śniegu
