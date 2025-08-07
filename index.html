@@ -9,81 +9,84 @@
   <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <div id="overlay">
-    <div id="overlayText">Click, To Enter</div>
+
+<div id="overlay">
+  <div id="overlayText">Click, To Enter</div>
+</div>
+
+<video muted loop id="bg-video">
+  <source src="assets/japan.mp4" type="video/mp4" />
+</video>
+
+<audio id="muzyka" loop>
+  <source src="assets/music.mp3" type="audio/mpeg" />
+  Twoja przeglądarka nie obsługuje odtwarzania audio.
+</audio>
+
+<div id="volumeControlContainer" class="volume-control">
+  <label for="volumeControl" id="volumeIcon">
+    <img src="assets/svg/speaker-24.png" width="20" height="20" />
+  </label>
+  <input type="range" id="volumeControl" min="0" max="1" step="0.001" value="0.1" />
+</div>
+
+<div class="main-container">
+  <div class="profile">
+    <img id="avatar" src="assets/avatar.png" alt="Avatar" class="avatar" />
+    <h1 class="username" id="username">Ładowanie...</h1>
+    <h3 class="description" id="description">Jesus died on a cross for you</h3>
+</div>
+
+<div class="discord-status">
+  <img id="status-avatar" src="assets/avatar.png" alt="Avatar" class="status-avatar" />
+  <div class="status-text">
+    <h2 id="status-name">
+      <span id="status-circle" class="status-circle"></span>
+      Nazwa użytkownika
+    </h2>
+    <p id="status-playing">Now Playing  0:24 ─●──────── -2:56 ↪</p>
+    <div id="spotify-container"></div>
   </div>
+</div>
 
-  <video muted loop id="bg-video">
-    <source src="assets/japan.mp4" type="video/mp4" />
-  </video>
+<div class="button-row">
+    <a href="https://www.roblox.com/users/550996076/profile" target="_blank" rel="noopener" class="icon-button steam-button" aria-label="Steam">
+    <img src="assets/svg/brand-roblox-svgrepo-com.svg" alt="Roblox" width="40" height="40" />
+  </a>
 
-  <audio id="muzyka" loop>
-    <source src="assets/music.mp3" type="audio/mpeg" />
-    Twoja przeglądarka nie obsługuje odtwarzania audio.
-  </audio>
+  <a href="https://steamcommunity.com/id/45678987654689543/" target="_blank" rel="noopener" class="icon-button discord-button" aria-label="Discord">
+    <img src="assets/svg/steam-1.svg" alt="Steam" width="40" height="40" />
+  </a>
+  
+  <a href="https://www.instagram.com/danyloo_ro/" target="_blank" rel="noopener" class="icon-button steam-button" aria-label="Instagram">
+    <img src="assets/svg/instagram-glyph.svg" alt="Instagram" width="40" height="40" />
+  </a>
 
-  <div id="volumeControlContainer" class="volume-control">
-    <label for="volumeControl" id="volumeIcon">
-      <img src="assets/svg/speaker-24.png" width="20" height="20" />
-    </label>
-    <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="0.1" />
+<a href="https://g4skins.com/ref/L9BEASTL9" target="_blank" rel="noopener" class="icon-button steam-button" aria-label="Instagram">
+    <img src="assets/svg/pobrane.jpg" alt="Instagram" width="40" height="40" />
+</a>
+  <a href="https://www.roblox.com/communities/33158719/TeeTrendz#!/about" target="_blank" rel="noopener" class="icon-button steam-button" aria-label="Instagram">
+    <img src="assets/svg/icons8-roblox-logo.svg" alt="Instagram" width="40" height="40" />
+  </a>
+</div>
+
+<div class="footer-info">
+  <span>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle;">
+      <path fill="currentColor" d="M12 9a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5a5 5 0 0 1 5-5a5 5 0 0 1 5 5a5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5" />
+    </svg>
+      183
+    </span> | <span>📍 ØQTF</span>
   </div>
+</div>
 
-  <div class="main-container">
-    <div class="profile">
-      <img id="avatar" src="assets/avatar.png" alt="Avatar" class="avatar" />
-      <h1 class="username" id="username">Ładowanie...</h1>
-      <h3 class="description" id="description">Jesus died on a cross for you</h3>
-    </div>
+<canvas id="snow"></canvas>
 
-    <div class="discord-status">
-      <img id="status-avatar" src="assets/avatar.png" alt="Avatar" class="status-avatar" />
-      <div class="status-text">
-        <h2 id="status-name">
-          <span id="status-circle" class="status-circle"></span>
-          Nazwa użytkownika
-        </h2>
-        <p id="status-playing">Now Playing  0:24 ─●──────── -2:56 ↪</p>
-        <div id="spotify-container"></div>
-      </div>
-    </div>
+<script>
+  const DISCORD_ID = "721771083040161802";
+</script>
+<script src="script.js">
+</script>
 
-    <div class="button-row">
-        <a href="https://www.roblox.com/users/550996076/profile" target="_blank" rel="noopener" class="icon-button steam-button" aria-label="Steam">
-        <img src="assets/svg/brand-roblox-svgrepo-com.svg" alt="Roblox" width="40" height="40" />
-      </a>
-
-      <a href="https://steamcommunity.com/id/45678987654689543/" target="_blank" rel="noopener" class="icon-button discord-button" aria-label="Discord">
-        <img src="assets/svg/steam-1.svg" alt="Steam" width="40" height="40" />
-      </a>
-      
-      <a href="https://www.instagram.com/danyloo_ro/" target="_blank" rel="noopener" class="icon-button steam-button" aria-label="Instagram">
-        <img src="assets/svg/instagram-glyph.svg" alt="Instagram" width="40" height="40" />
-      </a>
-
-    <a href="https://g4skins.com/ref/L9BEASTL9" target="_blank" rel="noopener" class="icon-button steam-button" aria-label="Instagram">
-        <img src="assets/svg/pobrane.jpg" alt="Instagram" width="40" height="40" />
-    </a>
-      <a href="https://www.roblox.com/communities/33158719/TeeTrendz#!/about" target="_blank" rel="noopener" class="icon-button steam-button" aria-label="Instagram">
-        <img src="assets/svg/icons8-roblox-logo.svg" alt="Instagram" width="40" height="40" />
-      </a>
-    </div>
-
-    <div class="footer-info">
-      <span>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle;">
-          <path fill="currentColor" d="M12 9a3 3 0 0 0-3 3a3 3 0 0 0 3 3a3 3 0 0 0 3-3a3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5a5 5 0 0 1 5-5a5 5 0 0 1 5 5a5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5" />
-        </svg>
-        183
-      </span> | <span>📍 ØQTF</span>
-    </div>
-  </div>
-
-  <canvas id="snow"></canvas>
-
-  <script>
-    const DISCORD_ID = "721771083040161802";
-  </script>
-  <script src="script.js"></script>
 </body>
 </html>
